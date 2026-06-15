@@ -182,9 +182,8 @@
     .name-card:nth-child(2) { transform:rotate(1deg); }
     .name-card:nth-child(3) { transform:rotate(-1.1deg); }
     .section-stack {
-      display:grid;
-      gap:34px;
-      margin-top:42px;
+      display:block;
+      margin-top:58px;
     }
     .sketch-section {
       position:relative;
@@ -196,7 +195,10 @@
       filter:url(#roughen);
       transform:rotate(var(--r, 0deg));
       overflow:hidden;
+      margin-bottom:64px;
+      isolation:isolate;
     }
+    .sketch-section > * { position:relative; z-index:2; }
     .sketch-section.wash { background:var(--soft); }
     .sketch-section.dark {
       background:var(--ink);
@@ -223,6 +225,290 @@
       line-height:.8;
       pointer-events:none;
     }
+    .section-stack .sketch-section:nth-child(1) {
+      width:100%;
+      min-height:560px;
+      display:grid;
+      grid-template-columns:1.12fr .88fr;
+      grid-template-areas:"stamp minis" "title minis" "text minis";
+      align-items:end;
+      column-gap:38px;
+    }
+    .section-stack .sketch-section:nth-child(1) .stamp { grid-area:stamp; align-self:start; }
+    .section-stack .sketch-section:nth-child(1) .title { grid-area:title; max-width:9ch; }
+    .section-stack .sketch-section:nth-child(1) .text { grid-area:text; max-width:52ch; }
+    .section-stack .sketch-section:nth-child(1) .mini-grid {
+      grid-area:minis;
+      align-self:center;
+      grid-template-columns:1fr;
+      transform:rotate(-1.1deg);
+    }
+    .section-stack .sketch-section:nth-child(1)::before {
+      inset:20px 42px 34px 18px;
+      border-style:dashed;
+      transform:rotate(-1.2deg);
+    }
+    .section-stack .sketch-section:nth-child(2) {
+      width:74%;
+      min-height:510px;
+      margin-left:auto;
+      display:grid;
+      align-content:space-between;
+      border-radius:60px 18px 42px 18px;
+    }
+    .section-stack .sketch-section:nth-child(2) .title { max-width:10ch; }
+    .section-stack .sketch-section:nth-child(2) .text { max-width:46ch; margin-left:auto; }
+    .section-stack .sketch-section:nth-child(2) .quote { width:min(520px, 78%); margin-left:14%; }
+    .section-stack .sketch-section:nth-child(3) {
+      width:58%;
+      min-height:610px;
+      margin-right:auto;
+      padding-top:80px;
+      border-radius:16px 18px 90px 20px;
+    }
+    .section-stack .sketch-section:nth-child(3) .line-card {
+      width:118%;
+      margin-left:22%;
+      margin-top:44px;
+      transform:rotate(2.2deg);
+    }
+    .section-stack .sketch-section:nth-child(4) {
+      width:88%;
+      margin-left:7%;
+      min-height:540px;
+      display:grid;
+      grid-template-columns:.95fr 1.05fr;
+      column-gap:30px;
+      align-items:center;
+    }
+    .section-stack .sketch-section:nth-child(4) .stamp,
+    .section-stack .sketch-section:nth-child(4) .title,
+    .section-stack .sketch-section:nth-child(4) .text { grid-column:1; }
+    .section-stack .sketch-section:nth-child(4) .mini-grid {
+      grid-column:2;
+      grid-row:1 / span 3;
+      grid-template-columns:1fr;
+      align-self:center;
+      margin-top:0;
+    }
+    .section-stack .sketch-section:nth-child(5) {
+      width:100%;
+      min-height:480px;
+      display:flex;
+      flex-direction:column;
+      justify-content:center;
+      text-align:center;
+      border-radius:120px 24px 120px 24px;
+    }
+    .section-stack .sketch-section:nth-child(5) .stamp,
+    .section-stack .sketch-section:nth-child(5) .draw-lines { margin-left:auto; margin-right:auto; }
+    .section-stack .sketch-section:nth-child(5) .text { margin-left:auto; margin-right:auto; }
+    .section-stack .sketch-section:nth-child(5) .draw-lines { width:min(620px, 100%); }
+    .section-stack .sketch-section:nth-child(6) {
+      width:82%;
+      min-height:560px;
+      margin-left:10%;
+      display:grid;
+      grid-template-columns:1fr minmax(250px, .7fr);
+      gap:26px;
+      align-items:center;
+      border-radius:22px 80px 22px 80px;
+    }
+    .section-stack .sketch-section:nth-child(6) .quote {
+      margin-top:0;
+      align-self:stretch;
+      display:flex;
+      align-items:center;
+      transform:rotate(1.6deg);
+    }
+    .section-stack .sketch-section:nth-child(7) {
+      width:72%;
+      min-height:360px;
+      margin-left:14%;
+      display:grid;
+      grid-template-columns:220px 1fr;
+      column-gap:26px;
+      align-items:center;
+    }
+    .section-stack .sketch-section:nth-child(7) .stamp {
+      grid-row:1 / span 3;
+      align-self:stretch;
+      writing-mode:vertical-rl;
+      transform:rotate(180deg);
+      justify-content:center;
+    }
+    .section-stack .sketch-section:nth-child(7) .line-card {
+      width:90%;
+      margin-left:auto;
+      transform:rotate(-1.8deg);
+    }
+    .section-stack .sketch-section:nth-child(8) {
+      width:66%;
+      min-height:620px;
+      margin-left:auto;
+      padding-bottom:120px;
+      border-radius:28px 28px 28px 110px;
+    }
+    .section-stack .sketch-section:nth-child(8) .line-card {
+      position:absolute;
+      left:-30%;
+      bottom:44px;
+      width:72%;
+      transform:rotate(-4deg);
+      z-index:4;
+    }
+    .section-stack .sketch-section:nth-child(9) {
+      width:94%;
+      margin-left:3%;
+      min-height:430px;
+      display:grid;
+      grid-template-columns:.8fr 1.2fr;
+      gap:30px;
+      align-items:center;
+      border-radius:18px;
+    }
+    .section-stack .sketch-section:nth-child(9) .stamp,
+    .section-stack .sketch-section:nth-child(9) .title { grid-column:1; }
+    .section-stack .sketch-section:nth-child(9) .qa-grid {
+      grid-column:2;
+      grid-row:1 / span 2;
+      margin-top:0;
+      grid-template-columns:1fr;
+    }
+    .section-stack .sketch-section:nth-child(10) {
+      width:100%;
+      min-height:640px;
+      display:grid;
+      grid-template-columns:1fr;
+      align-content:space-between;
+      border-radius:18px 120px 18px 120px;
+    }
+    .section-stack .sketch-section:nth-child(10) .mini-grid {
+      grid-template-columns:1.2fr .8fr 1fr;
+      align-items:stretch;
+    }
+    .section-stack .sketch-section:nth-child(10) .mini:nth-child(2) { margin-top:46px; }
+    .section-stack .sketch-section:nth-child(11) {
+      width:62%;
+      min-height:560px;
+      margin-right:auto;
+      display:grid;
+      align-content:start;
+    }
+    .section-stack .sketch-section:nth-child(11) .quote {
+      width:112%;
+      margin-left:46%;
+      margin-top:42px;
+      transform:rotate(3deg);
+    }
+    .section-stack .sketch-section:nth-child(12) {
+      width:100%;
+      min-height:260px;
+      display:grid;
+      grid-template-columns:240px 1fr;
+      gap:28px;
+      align-items:center;
+      border-radius:16px 16px 88px 16px;
+    }
+    .section-stack .sketch-section:nth-child(12) .stamp { align-self:start; }
+    .section-stack .sketch-section:nth-child(12) .title,
+    .section-stack .sketch-section:nth-child(12) .text { grid-column:2; }
+    .section-stack .sketch-section:nth-child(13) {
+      width:54%;
+      min-height:420px;
+      margin-left:auto;
+      display:flex;
+      flex-direction:column;
+      justify-content:flex-end;
+      border-radius:96px 20px 20px 96px;
+    }
+    .section-stack .sketch-section:nth-child(14) {
+      width:86%;
+      min-height:650px;
+      margin-left:5%;
+      display:grid;
+      grid-template-columns:.9fr 1.1fr;
+      column-gap:34px;
+      align-items:center;
+      border-radius:30px;
+    }
+    .section-stack .sketch-section:nth-child(14) .stamp,
+    .section-stack .sketch-section:nth-child(14) .title,
+    .section-stack .sketch-section:nth-child(14) .text { grid-column:1; }
+    .section-stack .sketch-section:nth-child(14) .quote {
+      grid-column:2;
+      grid-row:1 / span 3;
+      margin-top:0;
+      min-height:360px;
+      display:flex;
+      align-items:center;
+      transform:rotate(-2deg);
+    }
+    .section-stack .sketch-section:nth-child(15) {
+      width:48%;
+      min-height:440px;
+      margin-left:8%;
+      border-radius:18px 100px 18px 18px;
+    }
+    .section-stack .sketch-section:nth-child(16) {
+      width:100%;
+      min-height:560px;
+      display:grid;
+      grid-template-columns:1fr 320px;
+      gap:32px;
+      align-items:center;
+    }
+    .section-stack .sketch-section:nth-child(16) .stamp,
+    .section-stack .sketch-section:nth-child(16) .title,
+    .section-stack .sketch-section:nth-child(16) .text { grid-column:1; }
+    .section-stack .sketch-section:nth-child(16) .mini-grid {
+      grid-column:2;
+      grid-row:1 / span 3;
+      grid-template-columns:1fr;
+      margin-top:0;
+    }
+    .section-stack .sketch-section:nth-child(17) {
+      width:76%;
+      min-height:500px;
+      margin-left:auto;
+      display:grid;
+      grid-template-columns:1.1fr .9fr;
+      column-gap:26px;
+      align-items:end;
+      border-radius:18px 18px 110px 18px;
+    }
+    .section-stack .sketch-section:nth-child(17) .line-card {
+      grid-column:2;
+      grid-row:1 / span 3;
+      margin-top:0;
+      align-self:center;
+      transform:rotate(2.4deg);
+    }
+    .section-stack .sketch-section:nth-child(18) {
+      width:100%;
+      min-height:70vh;
+      display:flex;
+      flex-direction:column;
+      justify-content:center;
+      border-radius:0;
+    }
+    .section-stack .sketch-section:nth-child(18) .title {
+      max-width:12ch;
+      font-size:clamp(3.2rem, 8vw, 8.5rem);
+    }
+    .section-stack .sketch-section:nth-child(18) .text { max-width:58ch; margin-left:auto; }
+    .section-stack .sketch-section:nth-child(19) {
+      width:66%;
+      min-height:520px;
+      margin-left:17%;
+      display:flex;
+      flex-direction:column;
+      justify-content:center;
+      text-align:center;
+      border-radius:999px;
+    }
+    .section-stack .sketch-section:nth-child(19) .stamp,
+    .section-stack .sketch-section:nth-child(19) .text { margin-left:auto; margin-right:auto; }
     .mini-grid {
       display:grid;
       grid-template-columns:repeat(3, minmax(0, 1fr));
@@ -411,6 +697,41 @@
       .names { max-width:360px; }
       .mini-grid, .qa-grid, .scratch-grid { grid-template-columns:1fr; }
       .sketch-section { min-height:280px; }
+      .section-stack .sketch-section {
+        width:100% !important;
+        margin-left:0 !important;
+        margin-right:0 !important;
+        display:block !important;
+        min-height:auto !important;
+        border-radius:22px !important;
+      }
+      .section-stack .sketch-section .stamp {
+        writing-mode:horizontal-tb !important;
+        transform:rotate(-1.2deg) !important;
+      }
+      .section-stack .sketch-section .title,
+      .section-stack .sketch-section .text,
+      .section-stack .sketch-section .quote,
+      .section-stack .sketch-section .line-card,
+      .section-stack .sketch-section .mini-grid,
+      .section-stack .sketch-section .qa-grid,
+      .section-stack .sketch-section .draw-lines {
+        width:auto !important;
+        max-width:100% !important;
+        margin-left:0 !important;
+        margin-right:0 !important;
+        position:relative !important;
+        left:auto !important;
+        right:auto !important;
+        bottom:auto !important;
+        grid-column:auto !important;
+        grid-row:auto !important;
+      }
+      .section-stack .sketch-section .mini-grid,
+      .section-stack .sketch-section .qa-grid {
+        margin-top:24px !important;
+      }
+      .section-stack .sketch-section .mini:nth-child(2) { margin-top:0 !important; }
     }
     @media (max-width:560px) {
       .nav { position:relative; top:0; }
